@@ -32,7 +32,7 @@ export const ListPage: React.FC = () => {
   }));
 
   const [inputValue, setInputValue] = useState("");
-  const [list, setList] = useState(new LinkedListNode<any>(initArr));
+  const [list, setList] = useState(new LinkedListNode<IList | string>(initArr));
   const [array, setArray] = useState<Array<IList>>(initArr);
   const [input, setInput] = useState<number | null>(null);
   const [loader, setLoader] = useState(false);
@@ -290,6 +290,8 @@ export const ListPage: React.FC = () => {
     highlightNextElement();
   };
 
+  // const isIndexOutOfRange = (input < 0) || (input > array.length);
+
   return (
       <SolutionLayout title="Связный список">
         <div className={style.main}>
@@ -317,7 +319,7 @@ export const ListPage: React.FC = () => {
                   isLoader={loader && activeButton === "tail"}
               />
               <Button
-                  disabled={ loader || activeButton === "head"}
+                  disabled={loader || activeButton === "head"}
                   text={"Удалить из head"}
                   onClick={handleDeleteHead}
                   isLoader={loader && activeButton === "deleteHead"}
@@ -339,14 +341,14 @@ export const ListPage: React.FC = () => {
                   disabled={loader}
               />
               <Button
-                  disabled={(input === null) || (inputValue === '') || loader || activeButton.includes("addIndex")}
+                  disabled={(input === null) || (inputValue === '') || loader || activeButton.includes("addIndex") || (input < 0) || (input > array.length)}
                   text={"Добавить по индексу"}
                   extraClass={style.button}
                   onClick={() => handleAddByIndex(input ?? 0)}
                   isLoader={loader && activeButton.includes("addIndex")}
               />
               <Button
-                  disabled={(input === null) || loader || activeButton.includes("deleteIndex")}
+                  disabled={(input === null) || loader || activeButton.includes("deleteIndex") || (input < 0) || (input > array.length) }
                   text={"Удалить по индексу"}
                   extraClass={style.button}
                   onClick={() => handleDeleteByIndex(input ?? 0)}

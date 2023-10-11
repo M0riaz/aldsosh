@@ -32,6 +32,7 @@ export const FibonacciPage: React.FC = () => {
       }, (index + 1) * 500);
     });
   };
+  const isButtonDisabled = Number(number) > 19;
 
   return (
       <SolutionLayout title="Последовательность Фибоначчи">
@@ -45,6 +46,7 @@ export const FibonacciPage: React.FC = () => {
                 onChange={(e:FormEvent<HTMLInputElement>) => setNumber(e.currentTarget.value)}
             />
             <Button
+                disabled={isButtonDisabled}
                 type="submit"
                 text="Рассчитать"
                 isLoader={isLoad}
