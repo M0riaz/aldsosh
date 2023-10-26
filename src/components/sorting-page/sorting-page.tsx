@@ -166,6 +166,7 @@ export const SortingPage: React.FC = () => {
             <div className={style.radio}>
               <div className={style.radioItem}>
                 <RadioInput
+                    data-testid="choseRadio"
                     label={"Выбор"}
                     checked={selectedRadio === "Выбор"}
                     onChange={() => {
@@ -177,6 +178,7 @@ export const SortingPage: React.FC = () => {
                 />
               </div>
               <RadioInput
+                  data-testid="boobleRadio"
                   label={"Пузырек"}
                   checked={selectedRadio === "Пузырек"}
                   onChange={() => {
@@ -190,6 +192,7 @@ export const SortingPage: React.FC = () => {
             <div className={style.sortButton}>
               <div className={style.button}>
                 <Button
+                    data-testid="buttonUp"
                     isLoader={isLoadAscending}
                     text={"По возрастанию"}
                     sorting={Direction.Ascending}
@@ -199,6 +202,7 @@ export const SortingPage: React.FC = () => {
                 />
               </div>
               <Button
+                  data-testid="buttonDown"
                   isLoader={isLoadDescending}
                   text={"По убыванию"}
                   sorting={Direction.Descending}
@@ -215,9 +219,12 @@ export const SortingPage: React.FC = () => {
             />
           </form>
         </div>
-        <div className={style.columns}>
+        <div  data-testid="columnContainer" className={style.columns}>
           {sortedArray.map((num, index) => (
-              <Column index={num.value} key={index} state={num.color}/>
+              <div key={index} data-testid="columns">
+                <Column  index={num.value} state={num.color}/>
+              </div>
+
           ))}
         </div>
       </SolutionLayout>

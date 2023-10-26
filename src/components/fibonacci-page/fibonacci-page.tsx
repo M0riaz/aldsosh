@@ -32,7 +32,7 @@ export const FibonacciPage: React.FC = () => {
       }, (index + 1) * 500);
     });
   };
-  const isButtonDisabled = Number(number) > 19;
+  const isButtonDisabled = Number(number) > 19 || !number;
 
   return (
       <SolutionLayout title="Последовательность Фибоначчи">
