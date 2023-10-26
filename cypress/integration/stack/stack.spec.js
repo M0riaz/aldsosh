@@ -4,7 +4,8 @@ import {blueColor, circle, head, pinkColor, stackArr, stackPage} from "../utils/
 
 describe('stack',() => {
     it('подключение к станице стека',() => {
-        cy.visit('stack')
+        cy.visit(host);
+        cy.get('a[href*="/stack"]').click();
     })
     it('проверка инпута', () => {
         cy.get('input').should('have.value', '');

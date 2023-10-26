@@ -3,7 +3,8 @@ import {blueColor, circle, fibonacciPage} from "../utils/const";
 
 describe('fibonacci', () => {
     beforeEach('переход на страницу фибоначчи ', () => {
-        cy.visit('fibonacci')
+        cy.visit(host);
+        cy.get('a[href*="/fibonacci"]').click();
     });
     it('проверка инпута', () => {
         cy.get('input').should('have.value', '')

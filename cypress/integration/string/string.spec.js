@@ -3,7 +3,8 @@ import {blueColor, circle, greenColor, pinkColor, stringPage} from "../utils/con
 
 describe('string', () => {
     before('подключение к странице строка', () => {
-        cy.visit('recursion');
+        cy.visit(host);
+        cy.get('a[href*="/recursion"]').click();
     });
     it('проверка инпута', () => {
         cy.get('input').should('have.value', '')

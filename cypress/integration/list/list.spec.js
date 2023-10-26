@@ -13,7 +13,8 @@ import {
 
 describe('list', () => {
     it('подключение к станице список',  () => {
-        cy.visit('list')
+        cy.visit(host);
+        cy.get('a[href*="/list"]').click();
     });
     it('проверка инпута', () => {
         cy.get('input').should('have.value', '');

@@ -3,7 +3,8 @@ import {blueColor, circle, head, pinkColor, queueArr, queuePage, tail} from "../
 
 describe('queue', () => {
     it('подключение к станице очередь',  () => {
-        cy.visit('queue')
+        cy.visit(host);
+        cy.get('a[href*="/queue"]').click();
     });
     it('проверка инпута', () => {
         cy.get('input').should('have.value', '');
