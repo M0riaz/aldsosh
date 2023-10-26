@@ -1,37 +1,35 @@
 import {host} from "../utils/utils";
+import {fibonacciPage, listPage, queuePage, sortingPage, stackPage, stringPage} from "../utils/const";
 
 describe('App', () => {
     before('подключение к  localhost:3000', () => {
         cy.visit(host);
     });
+
     it('подключение к станице строка', () => {
        cy.visit(host)
-        cy.get('a[href*="/recursion"]').click();
-       cy.get('button').contains('К оглавлению').click()
-    })
-    it('подключение к станице Фибоначчи', () => {
+        cy.get(stringPage).click();
+        cy.get('[class*=return-button_button]').contains('К оглавлению').as('button').click()
+
         cy.visit(host)
-        cy.get('a[href*="/fibonacci"]').click();
-        cy.get('button').contains('К оглавлению').click()
-    })
-    it('подключение к станице сортировки', () => {
+        cy.get(fibonacciPage).click();
+        cy.get('@button').click()
+
         cy.visit(host)
-        cy.get('a[href*="/sorting"]').click();
-        cy.get('button').contains('К оглавлению').click()
-    })
-    it('подключение к станице стек', () => {
+        cy.get(sortingPage).click();
+        cy.get('@button').click()
+
         cy.visit(host)
-        cy.get('a[href*="/stack"]').click();
-        cy.get('button').contains('К оглавлению').click()
-    })
-    it('подключение к станице очередь', () => {
+        cy.get(stackPage).click();
+        cy.get('@button').click()
+
         cy.visit(host)
-        cy.get('a[href*="/queue"]').click();
-        cy.get('button').contains('К оглавлению').click()
-    })
-    it('подключение к станице связный список', () => {
+        cy.get(queuePage).click();
+        cy.get('@button').click()
+
         cy.visit(host)
-        cy.get('a[href*="/list"]').click();
-        cy.get('button').contains('К оглавлению').click()
-    })
+        cy.get(listPage).click();
+        cy.get('@button').click()
+    });
+
 });

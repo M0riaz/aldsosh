@@ -1,11 +1,10 @@
 import {host} from "../utils/utils";
-import {circle, head, stackArr} from "../utils/const";
+import {blueColor, circle, head, pinkColor, stackArr, stackPage} from "../utils/const";
 
 
 describe('stack',() => {
     it('подключение к станице стека',() => {
-        cy.visit(host);
-        cy.get('a[href*="/stack"]').click();
+        cy.visit('stack')
     })
     it('проверка инпута', () => {
         cy.get('input').should('have.value', '');
@@ -19,7 +18,7 @@ describe('stack',() => {
         cy.get('button').contains('Добавить').click();
         cy.get(circle)
             .eq(0)
-            .should("have.css", "border", '4px solid rgb(210, 82, 225)')
+            .should("have.css", "border", pinkColor)
             .contains('q');
         cy.get(head)
             .eq(0)
@@ -29,12 +28,12 @@ describe('stack',() => {
 
         cy.get(circle)
             .eq(0)
-            .should("have.css", "border",'4px solid rgb(0, 50, 255)');
+            .should("have.css", "border",blueColor);
         cy.get('input').type('w');
         cy.get('button').contains('Добавить').click();
         cy.get(circle)
             .eq(1)
-            .should("have.css", "border", '4px solid rgb(210, 82, 225)')
+            .should("have.css", "border", pinkColor)
             .contains('w');
         cy.get(circle)
             .eq(1)
@@ -44,12 +43,12 @@ describe('stack',() => {
         cy.tick(500);
         cy.get(circle)
             .eq(1)
-            .should("have.css", "border",'4px solid rgb(0, 50, 255)');
+            .should("have.css", "border",blueColor);
         cy.get('input').type('123');
         cy.get('button').contains('Добавить').click();
         cy.get(circle)
             .eq(2)
-            .should("have.css", "border", '4px solid rgb(210, 82, 225)')
+            .should("have.css", "border", pinkColor)
             .contains('123');
         cy.get(circle)
             .eq(2)
@@ -59,7 +58,7 @@ describe('stack',() => {
         cy.tick(500);
         cy.get(circle)
             .eq(2)
-            .should("have.css", "border",'4px solid rgb(0, 50, 255)')
+            .should("have.css", "border",blueColor)
             .end();
 
     });
@@ -72,7 +71,7 @@ describe('stack',() => {
 
         cy.get(circle)
             .eq(2)
-            .should("have.css", "border", '4px solid rgb(210, 82, 225)')
+            .should("have.css", "border", pinkColor)
             .contains('123');
         cy.get(circle)
             .eq(2)

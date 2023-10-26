@@ -1,10 +1,19 @@
 import {host} from "../utils/utils";
-import {circle, head, input, meaning, smallCircle, tail} from "../utils/const";
+import {
+    blueColor,
+    circle,
+    greenColor,
+    head,
+    input,
+    meaning,
+    pinkColor,
+    smallCircle,
+    tail
+} from "../utils/const";
 
 describe('list', () => {
     it('подключение к станице список',  () => {
-        cy.visit(host);
-        cy.get('a[href*="/list"]').click();
+        cy.visit('list')
     });
     it('проверка инпута', () => {
         cy.get('input').should('have.value', '');
@@ -13,26 +22,26 @@ describe('list', () => {
     it('отрисовки дефолтного списка ',  () => {
         cy.get(circle)
             .eq(0)
-            .should("have.css", "border", '4px solid rgb(0, 50, 255)')
+            .should("have.css", "border", blueColor)
             .contains('0');
         cy.get(head)
             .eq(0)
             .contains('Head');
         cy.get(circle)
             .eq(1)
-            .should("have.css", "border", '4px solid rgb(0, 50, 255)')
+            .should("have.css", "border", blueColor)
             .contains('1');
         cy.get(circle)
             .eq(2)
-            .should("have.css", "border", '4px solid rgb(0, 50, 255)')
+            .should("have.css", "border", blueColor)
             .contains('7');
         cy.get(circle)
             .eq(3)
-            .should("have.css", "border", '4px solid rgb(0, 50, 255)')
+            .should("have.css", "border", blueColor)
             .contains('45');
         cy.get(circle)
             .eq(4)
-            .should("have.css", "border", '4px solid rgb(0, 50, 255)')
+            .should("have.css", "border", blueColor)
             .contains('12');
         cy.get(tail)
             .eq(4)
@@ -45,19 +54,19 @@ describe('list', () => {
         cy.get('button').contains('Добавить в head').click();
 
         cy.get(smallCircle)
-            .should("have.css", "border", '4px solid rgb(210, 82, 225)')
+            .should("have.css", "border", pinkColor)
             .contains('u')
 
         cy.tick(1000);
         cy.get(circle)
             .eq(0)
-            .should("have.css", "border", '4px solid rgb(127, 224, 81)')
+            .should("have.css", "border", greenColor)
             .contains('u');
 
         cy.tick(1000);
         cy.get(circle)
             .eq(0)
-            .should("have.css", "border", '4px solid rgb(0, 50, 255)')
+            .should("have.css", "border", blueColor)
             .contains('u');
         cy.get(head)
             .eq(0)
@@ -70,19 +79,19 @@ describe('list', () => {
         cy.get('button').contains('Добавить в tail').click();
 
         cy.get(smallCircle)
-            .should("have.css", "border", '4px solid rgb(210, 82, 225)')
+            .should("have.css", "border", pinkColor)
             .contains('qwe')
 
         cy.tick(1000);
         cy.get(circle)
             .eq(6)
-            .should("have.css", "border", '4px solid rgb(127, 224, 81)')
+            .should("have.css", "border", greenColor)
             .contains('qwe');
 
         cy.tick(1000);
         cy.get(circle)
             .eq(6)
-            .should("have.css", "border", '4px solid rgb(0, 50, 255)')
+            .should("have.css", "border", blueColor)
             .contains('qwe');
         cy.get(tail)
             .eq(6)
@@ -93,13 +102,13 @@ describe('list', () => {
         cy.tick(1000)
         cy.get('button').contains('Удалить из head').click();
         cy.get(smallCircle)
-            .should("have.css", "border", '4px solid rgb(210, 82, 225)')
+            .should("have.css", "border", pinkColor)
             .contains('u')
 
         cy.tick(1000)
         cy.get(circle)
             .eq(0)
-            .should("have.css", "border", '4px solid rgb(0, 50, 255)')
+            .should("have.css", "border", blueColor)
             .contains('0');
         cy.get(head)
             .eq(0)
@@ -111,13 +120,13 @@ describe('list', () => {
         cy.tick(1000)
         cy.get('button').contains('Удалить из tail').click();
         cy.get(smallCircle)
-            .should("have.css", "border", '4px solid rgb(210, 82, 225)')
+            .should("have.css", "border", pinkColor)
             .contains('qwe')
 
         cy.tick(1000)
         cy.get(circle)
             .eq(4)
-            .should("have.css", "border", '4px solid rgb(0, 50, 255)')
+            .should("have.css", "border", blueColor)
             .contains('12');
         cy.get(tail)
             .eq(4)
@@ -132,22 +141,22 @@ describe('list', () => {
         cy.get('button').contains('Добавить по индексу').click();
 
         cy.get(smallCircle)
-            .should("have.css", "border", '4px solid rgb(210, 82, 225)')
+            .should("have.css", "border", pinkColor)
             .contains('hi')
 
         cy.get(circle)
             .eq(0)
-            .should("have.css", "border", '4px solid rgb(210, 82, 225)')
+            .should("have.css", "border", pinkColor)
 
         cy.tick(1000)
         cy.get(circle)
             .eq(1)
-            .should("have.css", "border", '4px solid rgb(210, 82, 225)')
+            .should("have.css", "border", pinkColor)
 
         cy.tick(1000)
         cy.get(circle)
             .eq(0)
-            .should("have.css", "border", '4px solid rgb(0, 50, 255)')
+            .should("have.css", "border", blueColor)
             .contains('0');
         cy.get(head)
             .eq(0)
@@ -155,13 +164,13 @@ describe('list', () => {
 
         cy.get(circle)
             .eq(1)
-            .should("have.css", "border", '4px solid rgb(127, 224, 81)')
+            .should("have.css", "border", greenColor)
             .contains('hi')
 
         cy.tick(1000)
         cy.get(circle)
             .eq(1)
-            .should("have.css", "border", '4px solid rgb(0, 50, 255)')
+            .should("have.css", "border", blueColor)
             .contains('hi')
     })
     it('удаления элемента по индексу',  () => {
@@ -172,36 +181,36 @@ describe('list', () => {
 
         cy.get(circle)
             .eq(0)
-            .should("have.css", "border", '4px solid rgb(210, 82, 225)')
+            .should("have.css", "border", pinkColor)
             .contains('0')
 
         cy.tick(1000)
         cy.get(circle)
             .eq(1)
-            .should("have.css", "border", '4px solid rgb(210, 82, 225)')
+            .should("have.css", "border", pinkColor)
             .contains('hi')
 
         cy.tick(1000)
         cy.get(circle)
             .eq(2)
-            .should("have.css", "border", '4px solid rgb(210, 82, 225)')
+            .should("have.css", "border", pinkColor)
             .contains('1')
 
         cy.tick(1000)
         cy.get(circle)
             .eq(3)
-            .should("have.css", "border", '4px solid rgb(210, 82, 225)')
+            .should("have.css", "border", pinkColor)
             .contains('7')
 
         cy.tick(1000)
         cy.get(smallCircle)
-            .should("have.css", "border", '4px solid rgb(210, 82, 225)')
+            .should("have.css", "border", pinkColor)
             .contains('7')
 
         cy.tick(1000)
         cy.get(circle)
             .eq(3)
-            .should("have.css", "border", '4px solid rgb(0, 50, 255)')
+            .should("have.css", "border", blueColor)
             .contains('45')
         cy.get(head)
             .eq(0)

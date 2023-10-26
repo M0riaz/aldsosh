@@ -29,7 +29,7 @@ export const FibonacciPage: React.FC = () => {
         if (index === fibArray.length - 1) {
           setIsLoad(false);
         }
-      }, (index + 1) * 500);
+      }, index * 500);
     });
   };
   const isButtonDisabled = Number(number) > 19 || !number;

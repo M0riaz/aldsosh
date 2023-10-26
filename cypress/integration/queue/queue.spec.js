@@ -1,10 +1,9 @@
 import {host} from "../utils/utils";
-import {circle, head, queueArr, stackArr, tail} from "../utils/const";
+import {blueColor, circle, head, pinkColor, queueArr, queuePage, tail} from "../utils/const";
 
 describe('queue', () => {
     it('подключение к станице очередь',  () => {
-        cy.visit(host);
-        cy.get('a[href*="/queue"]').click();
+        cy.visit('queue')
     });
     it('проверка инпута', () => {
         cy.get('input').should('have.value', '');
@@ -18,7 +17,7 @@ describe('queue', () => {
         cy.get('button').contains('Добавить').click();
         cy.get(circle)
             .eq(0)
-            .should("have.css", "border", '4px solid rgb(210, 82, 225)')
+            .should("have.css", "border", pinkColor)
             .contains('m');
         cy.get(head)
             .eq(0)
@@ -30,7 +29,7 @@ describe('queue', () => {
         cy.tick(1000);
         cy.get(circle)
             .eq(0)
-            .should("have.css", "border",'4px solid rgb(0, 50, 255)');
+            .should("have.css", "border",blueColor);
         cy.get(head)
             .eq(0)
             .contains('head');
@@ -38,7 +37,7 @@ describe('queue', () => {
         cy.get('button').contains('Добавить').click();
         cy.get(circle)
             .eq(1)
-            .should("have.css", "border", '4px solid rgb(210, 82, 225)')
+            .should("have.css", "border", pinkColor)
             .contains('e');
         cy.get(circle)
             .eq(1)
@@ -48,12 +47,12 @@ describe('queue', () => {
         cy.tick(1000);
         cy.get(circle)
             .eq(1)
-            .should("have.css", "border",'4px solid rgb(0, 50, 255)');
+            .should("have.css", "border",blueColor);
         cy.get('input').type('o');
         cy.get('button').contains('Добавить').click();
         cy.get(circle)
             .eq(2)
-            .should("have.css", "border", '4px solid rgb(210, 82, 225)')
+            .should("have.css", "border", pinkColor)
             .contains('o');
         cy.get(circle)
             .eq(2)
@@ -63,12 +62,12 @@ describe('queue', () => {
         cy.tick(1000);
         cy.get(circle)
             .eq(2)
-            .should("have.css", "border",'4px solid rgb(0, 50, 255)');
+            .should("have.css", "border",blueColor);
         cy.get('input').type('w');
         cy.get('button').contains('Добавить').click();
         cy.get(circle)
             .eq(3)
-            .should("have.css", "border", '4px solid rgb(210, 82, 225)')
+            .should("have.css", "border", pinkColor)
             .contains('w');
         cy.get(circle)
             .eq(3)
@@ -78,7 +77,7 @@ describe('queue', () => {
         cy.tick(1000);
         cy.get(circle)
             .eq(3)
-            .should("have.css", "border",'4px solid rgb(0, 50, 255)')
+            .should("have.css", "border",blueColor)
             .end();
     })
     it('удаление элемента из очереди',  () => {
@@ -87,12 +86,12 @@ describe('queue', () => {
         cy.get('button').contains('Удалить').click();
         cy.get(circle)
             .eq(0)
-            .should("have.css", "border", '4px solid rgb(210, 82, 225)')
+            .should("have.css", "border", pinkColor)
 
         cy.tick(1000)
         cy.get(circle)
             .eq(0)
-            .should("have.css", "border",'4px solid rgb(0, 50, 255)');
+            .should("have.css", "border",blueColor);
         cy.get(circle)
             .eq(1)
             .get(head)
