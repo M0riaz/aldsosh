@@ -1,6 +1,6 @@
 interface IStack<T> {
     push: (item: T) => void;
-    pop: () => void;
+    pop():void;
     size: () => number;
     elements: () => T[];
     clear: () => void

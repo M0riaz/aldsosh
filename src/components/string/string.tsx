@@ -77,6 +77,7 @@ export const StringComponent: React.FC = () => {
         <div className={style.container}>
           <form className={style.form} onSubmit={handleClick}>
             <Input
+                data-testid="Input"
                 isLimitText={true}
                 maxLength={11}
                 value={inputValue}
@@ -87,6 +88,7 @@ export const StringComponent: React.FC = () => {
                 text="Развернуть"
                 disabled={inputValue.length > 0 ? false : true}
                 isLoader={isLoad}
+                data-testid="button"
             />
           </form>
           <div className={style.output}>

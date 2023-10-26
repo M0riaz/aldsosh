@@ -95,7 +95,7 @@ export const StackPage: React.FC = () => {
                 disabled={stack.size() > 0 ? false : true}
             />
           </form>
-          <div className={style.output}>
+          <div data-testid={'stackArr'} className={style.output}>
             {array.map((element, index) => (
                 <Circle
                     state={element.color}

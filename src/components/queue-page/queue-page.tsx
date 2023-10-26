@@ -121,7 +121,7 @@ export const QueuePage: React.FC = () => {
                 disabled={queue.isEmpty()? true: false}
             />
           </form>
-          <div className={style.output}>
+          <div data-testid={"queue"} className={style.output}>
             {array.map((element, index) => (
                 <Circle
                     key={index}
